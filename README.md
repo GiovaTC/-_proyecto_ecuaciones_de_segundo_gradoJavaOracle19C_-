@@ -3,7 +3,9 @@
 
 <img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/ec913f23-09dd-432b-9972-dc2aad173afb" />  
 
-<img width="1277" height="1079" alt="image" src="https://github.com/user-attachments/assets/0e378bf5-11eb-4641-b125-5d785e3b63ce" />    
+<img width="1277" height="1079" alt="image" src="https://github.com/user-attachments/assets/0e378bf5-11eb-4641-b125-5d785e3b63ce" />   
+
+<img width="1274" height="1079" alt="image" src="https://github.com/user-attachments/assets/dd289d1f-5a58-4b02-9b42-baac2964e26a" />    
 ## 1. Descripción
 
 Aplicación desarrollada en Java 21 utilizando IntelliJ IDEA y Oracle Database 19c.

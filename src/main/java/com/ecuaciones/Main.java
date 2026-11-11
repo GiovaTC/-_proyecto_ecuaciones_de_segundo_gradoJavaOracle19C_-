@@ -132,13 +132,48 @@ public class Main {
                 x1Real, x1Imag, x2Real, x2Imag);
     }
 
-    private static String formato(double a) {
-        return  null;   
+    private static void mostrarProcedimiento(Resultado r) {
+
+        System.out.println("Ecuacion: " + r.ecuacion());
+        System.out.println("\nPASO 1: IDENTIFICAR coeficientes!");
+
+        System.out.println("A = " + r.a());
+        System.out.println("B = " + r.b());
+        System.out.println("C = " + r.c());
+
+        System.out.println("\nPASO 2: CALCULAR discriminante!");
+        System.out.println("D = B^2 - 4*A*C");
+
+        System.out.println("D = (" + r.b() + ")^2 - 4*("
+                + r.a() + ")*(" + r.c() + ")");
+
+        System.out.println("D = " + r.discriminante());
+
+        System.out.println("\nPASO 3: IDENTIFICAR soluciones!");
+        System.out.println("TIPO: " + r.tipo());
+
+        System.out.println("\nPASO 4: Resultados!");
+
+        mostrarRaiz("X1", r.x1Real(), r.x1Imag());
+        mostrarRaiz("X2", r.x2Real(), r.x2Imag());
     }
 
-    private static void mostrarProcedimiento(Resultado resultado) {
+    private static void mostrarRaiz(String nombre, double real, double imaginaria)
+    {
+        if (imaginaria == 0)
+        {
+            System.out.printf("%s = %.4f%n", nombre, real);
+        }
+        else {
 
+            System.out.printf("%s = %.4f %s %.4fi%n",
+                    nombre,
+                    real,
+                    imaginaria >= 0 ? "+" : "-",
+                    Math.abs(imaginaria));
+        }
     }
+
 
     private static void guardarOracle(Connection conexion, Resultado resultado) {
 
@@ -146,5 +181,9 @@ public class Main {
 
     private static void consultarResultados(Connection conexion) {
 
+    }
+
+    private static String formato(double a) {
+        return  null;
     }
 }

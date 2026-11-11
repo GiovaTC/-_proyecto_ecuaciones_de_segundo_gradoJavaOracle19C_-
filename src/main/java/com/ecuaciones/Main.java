@@ -174,10 +174,33 @@ public class Main {
         }
     }
 
+    // GUARDAR INFORMACION EN ORACLE BD!
+    private static void guardarOracle(Connection conexion, Resultado r) throws SQLException
+    {
+        String sql = "{call PR_GUARDAR_ECUACION(?,?,?,?,?,?,?,?,?,?)}";
 
-    private static void guardarOracle(Connection conexion, Resultado resultado) {
+        try (CallableStatement cs = conexion.prepareCall(sql))
+        {
 
-    }
+            cs.setString(1, r.ecuacion());
+            cs.setDouble(2, r.a());
+            cs.setDouble(3, r.b());
+            cs.setDouble(4, r.c());
+            cs.setDouble(5, r.discriminante());
+            cs.setString(6, r.tipo());
+            cs.setDouble(7, r.x1Real());
+            cs.setDouble(8, r.x1Imag());
+            cs.setDouble(9, r.x2Real());
+            cs.setDouble(10, r.x2Imag());
+
+            cs.execute();
+
+            conexion.commit();
+
+            System.out.println(
+                    "\nRegistro almacenado correctamente en Oracle 19c.");
+        }
+    }   
 
     private static void consultarResultados(Connection conexion) {
 

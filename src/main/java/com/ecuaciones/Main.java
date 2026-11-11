@@ -200,13 +200,45 @@ public class Main {
             System.out.println(
                     "\nRegistro almacenado correctamente en Oracle 19c.");
         }
+    }
+
+    private static void consultarResultados(Connection conexion) throws SQLException
+    {
+
+        String sql = """
+                SELECT ID, ECUACION, DISCRIMINANTE, TIPO_SOLUCION, X1_REAL, X1_IMAGINARIO,
+                X2_REAL, X2_IMAGINARIO FROM ECUACIONES_RESULTADOS ORDER BY ID
+                """;
+
+        System.out.println("\n====================================");
+        System.out.println(" RESULTADOS ALMACENADOS EN ORACLE");
+        System.out.println("====================================");
+
+        try (Statement st = conexion.createStatement();
+             ResultSet rs = st.executeQuery(sql))
+        {
+            while (rs.next())
+            {
+                System.out.println("\nID: " + rs.getInt("ID"));
+                System.out.println(
+                        "Ecuacion: " + rs.getString("ECUACION"));
+                System.out.println(
+                        "Discriminante: "
+                                + rs.getDouble("DISCRIMINANTE"));
+                System.out.println(
+                        "Tipo: " + rs.getString("TIPO_SOLUCION"));
+
+                mostrarRaiz("X1",
+                        rs.getDouble("X1_REAL"),
+                        rs.getDouble("X1_IMAGINARIO"));
+                mostrarRaiz("X2",
+                        rs.getDouble("X2_REAL"),
+                        rs.getDouble("X2_IMAGINARIO"));
+            }
+        }
+    }
+
+    private static String formato(double numero) {
+        return  String.format("%.2f", numero);
     }   
-
-    private static void consultarResultados(Connection conexion) {
-
-    }
-
-    private static String formato(double a) {
-        return  null;
-    }
 }
